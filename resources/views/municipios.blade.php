@@ -22,14 +22,14 @@
                             @foreach( $municipios as $municipio )
                             <tr>
                                 <td>
-                                <a href="{{route('localidades', array('municipio_id' => $municipio->id))}}">
+                                <a href="{{url('localidades')}}">
                                     {{ $municipio->nombre }}</a>
                                 </td>
                                 <td>
                                     {{ $municipio->poblacion }}
                                 </td>
                                 <td>
-                                    <a href="{{route('getMunicipio', array('municipio_id' => $municipio->id))}}" >
+                                    <a href="{{url('municipios')}}" >
                                         <img src="/assets/css/images/edit.png" width="32px" />
                                     </a>
                                 </td>

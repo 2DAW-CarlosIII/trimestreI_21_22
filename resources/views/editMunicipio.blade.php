@@ -11,8 +11,9 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="">
-
+        <form method="POST" action="{{ url('/municipios/edit/'.$municipio->id) }}">
+            {{ method_field('PUT') }}
+            @csrf
             <!-- Nombre -->
             <div>
                 <x-label for="nombre" :value="__('Nombre')" />
