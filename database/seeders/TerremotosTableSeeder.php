@@ -16,10 +16,24 @@ class TerremotosTableSeeder extends Seeder
     public function run()
     {
         Terremoto::truncate();
-
+        foreach (self::$arrayTerremotos as $terremotos) {
+            if ($terremotos['Magnitud'] >= "4") {
+                $p = new Terremoto();
+                $p->OBJECTID = $terremotos['OBJECTID'];
+                $p->DateTime = new \Datetime($terremotos['DateTime']);
+                $p->ErrTime = $terremotos['ErrTime'];
+                $p->RMS = $terremotos['RMS'];
+                $p->Latitude = $terremotos['Latitude'];
+                $p->Longitude = $terremotos['Longitude'];
+                $p->Depth = $terremotos['Depth'];
+                $p->Magnitud = $terremotos['Magnitud'];
+                $p->localidad_id = rand(1, 143);
+                $p->save();
+            }
+        }
     }
 
-    private static $terremotos = array
+    private static $arrayTerremotos = array
     (
 
         array

@@ -22,6 +22,9 @@ Route::get('/', function () {
 
 Route::get('import', [TerremotosController::class, 'getImport']);
 
+Route::get('/localidades/{municipio_id?}', [LocalidadesController::class, 'getIndex']);
+
+
 Route::get('municipios', [MunicipiosController::class, 'getIndex'])->name('municipios');
 
 Route::get('/dashboard', function () {

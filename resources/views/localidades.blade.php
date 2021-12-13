@@ -20,56 +20,25 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($arrayLocalidades as $localidades)
+
                             <tr>
                                 <td>
                                 <a href="{{ url('/terremotos/' . 1 ) }}">
-                                    Barlovento</a>
+                                    {{$localidades->nombre}}</a>
                                 </td>
                                 <td>
-                                    Capital de municipio</a>
+                                    {{$localidades->estado}}</a>
                                 </td>
                                 <td>
-                                    629
+                                    {{$localidades->poblacion}}
                                 </td>
                                 <td>
-                                    1</a>
+                                    {{$localidades->municipio_id}}</a>
                                 </td>
 
                             </tr>
-                            <tr>
-                                <td>
-                                <a href="{{ url('/terremotos/' . 2 ) }}">
-                                    Camino Real</a>
-                                </td>
-                                <td>
-                                    Localidad</a>
-                                </td>
-                                <td>
-                                    70
-                                </td>
-                                <td>
-                                    1</a>
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <td>
-                                <a href="{{ url('/terremotos/' . 3 ) }}">
-                                    Cuesta Alta</a>
-                                </td>
-                                <td>
-                                    Localidad</a>
-                                </td>
-                                <td>
-                                    62
-                                </td>
-                                <td>
-                                    1</a>
-                                </td>
-
-                            </tr>
-
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     </div>
