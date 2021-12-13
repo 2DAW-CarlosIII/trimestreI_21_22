@@ -5,19 +5,26 @@ namespace Database\Seeders;
 use App\Models\Municipio;
 use Illuminate\Database\Seeder;
 
-class MunicipiosTableSeeder extends Seeder
-{
+class MunicipiosTableSeeder extends Seeder {
     /**
      * Run the database seeds.
      *
      * @return void
      */
-    public function run()
-    {
-        Municipio::truncate();
-
+    public function run(){
+        self::seedMunicipios();
+        $this->command->info('Tabla municipios inicializada con datos!');
     }
 
+    private static function seedMunicipios(){
+        Municipio::truncate();
+        foreach (self::$municipios as $municipio){
+            $p = new Municipio;
+            $p->nombre = $municipio['nombre'];
+            $p->poblacion = $municipio['poblacion'];
+            $p->save();
+        }
+    }
     private static $municipios = array (
         array (
           "nombre" => 'Barlovento',

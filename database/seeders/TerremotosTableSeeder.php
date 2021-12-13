@@ -3,8 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Terremoto;
+use App\Models\Terremotos;
 use App\Models\Localidad;
+use Illuminate\Support\Facades\DB;
 
 class TerremotosTableSeeder extends Seeder
 {
@@ -13,12 +14,26 @@ class TerremotosTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
-    {
-        Terremoto::truncate();
-
+    public function run() {
+        self::seedTerremoto();
+        $this->command->info('Tabla terremotos inicializada con datos!');
     }
 
+    private static function seedTerremoto(){
+        Terremotos::truncate();
+        $terremotosMagnitud = DB::table('terremotos')->where('Magnitud','>=','4');
+        foreach ($terremotosMagnitud as $terremoto){
+            $p = new Terremotos;
+            $p->OBJECTID = $terremoto['OBJECTID'];
+            $p->DataTime = new Datetime('DateTime');
+            $p->ErrTime = $terremoto['ErrTime'];
+            $p->RMS = $terremoto['RMS'];
+            $p->Latitude = $terremoto['Latitude'];
+            $p->Longitude = $terremoto['Longitude'];
+            $p->Depth = $terremoto['Depth'];
+            $p->Magnitud = $terremoto['Magnitud'];
+        }
+    }
     private static $terremotos = array
     (
 

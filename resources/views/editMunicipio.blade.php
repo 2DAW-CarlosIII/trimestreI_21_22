@@ -12,7 +12,8 @@
         </x-slot>
 
         <form method="POST" action="">
-
+            {{method_field('PUT')}}
+	            @csrf
             <!-- Nombre -->
             <div>
                 <x-label for="nombre" :value="__('Nombre')" />

@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/localidades/{municipio_id?}',[LocalidadesController::class,'getIndex']);
+
+Route::get('/municipios/edit/{id}', []);
+
 Route::get('import', [TerremotosController::class, 'getImport']);
 
 Route::get('municipios', [MunicipiosController::class, 'getIndex'])->name('municipios');
