@@ -30,6 +30,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/localidades/{municipio_id?}', [LocalidadesController::class, 'localidades.blade.php']);
 
-Route::get('/municipios/edit/{id}', [MunicipiosController::class, 'editMunicipio.blade.php']);
+Route::get('/municipios/edit/{id}', [MunicipiosController::class, 'getIndex']);
 
 require __DIR__.'/auth.php';
