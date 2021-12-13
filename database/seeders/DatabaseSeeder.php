@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TerremotosTableSeeder::class);
 
+	//Municipios y Localidades , se quedan como estan.
+	// Terremotos, Unicamente Magnitud Igual o superior a 4, Localidades entre 1 y 143 al localidad_id
+	
         Model::reguard();
 
         Schema::enableForeignKeyConstraints();
