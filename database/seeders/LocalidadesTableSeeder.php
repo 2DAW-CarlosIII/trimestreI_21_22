@@ -16,6 +16,14 @@ class LocalidadesTableSeeder extends Seeder
     {
         Localidad::truncate();
 
+        foreach( self::$localidades as $localidad ) {
+            $p = new Localidad();
+            $p->nombre = $localidad['nombre'];
+            $p->estado = $localidad['estado'];
+            $p->poblacion = $localidad['poblacion'];
+            $p->municipio_id = $localidad['municipio_id'];
+            $p->save();
+        }
     }
 
     private static $localidades = array (

@@ -28,4 +28,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/localidades/{municipio_id?}', [LocalidadesController::class, 'getIndex']);
+
 require __DIR__.'/auth.php';

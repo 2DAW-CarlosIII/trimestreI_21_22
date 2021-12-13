@@ -20,6 +20,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($localidades as $localidad)
+                                <tr>
+                                    <td>{{$localidad->nombre}}</td>
+                                    <td>{{$localidad->estado}}</td>
+                                    <td>{{$localidad->poblacion}}</td>
+                                    <td>{{$localidad->municipio_id}}</td>
+                                </tr>
+                            @endforeach
                             <tr>
                                 <td>
                                 <a href="{{ url('/terremotos/' . 1 ) }}">

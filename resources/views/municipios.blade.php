@@ -22,7 +22,7 @@
                             @foreach( $municipios as $municipio )
                             <tr>
                                 <td>
-                                <a href="{{route('localidades', array('municipio_id' => $municipio->id))}}">
+                                <a href="{{route('/localidades/municipio_id', array('municipio_id' => $municipio->id))}}">
                                     {{ $municipio->nombre }}</a>
                                 </td>
                                 <td>
