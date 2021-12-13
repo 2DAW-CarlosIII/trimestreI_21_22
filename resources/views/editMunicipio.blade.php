@@ -13,18 +13,20 @@
 
         <form method="POST" action="">
 
+            @csrf
+
             <!-- Nombre -->
             <div>
                 <x-label for="nombre" :value="__('Nombre')" />
 
-                <x-input id="nombre" class="block mt-1 w-full text-gray-700" type="text" name="nombre" value="" required autofocus />
+                <x-input id="nombre" class="block mt-1 w-full text-gray-700" type="text" name="nombre" value="{{ $municipio->nombre }}" required autofocus />
             </div>
 
             <!-- Población -->
             <div class="mt-4">
                 <x-label for="poblacion" :value="__('Población')" />
 
-                <x-input id="poblacion" class="block mt-1 w-full text-gray-700" type="number" name="poblacion" value="" required />
+                <x-input id="poblacion" class="block mt-1 w-full text-gray-700" type="number" name="poblacion" value="{{ $municipio->poblacion }}" required />
             </div>
 
                 <x-button class="ml-4">

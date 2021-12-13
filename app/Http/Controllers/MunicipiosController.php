@@ -17,7 +17,7 @@ class MunicipiosController extends Controller
 
     public function getEdit($municipio_id)
     {
-
+        return view('municipios', array('municipio' => Municipio::findOrFail($municipio_id)));
     }
 
     public function putEdit(Request $request, $municipio_id)

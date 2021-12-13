@@ -28,5 +28,21 @@ class DatabaseSeeder extends Seeder
         Model::reguard();
 
         Schema::enableForeignKeyConstraints();
+
+        self::seedUsers();
+
     }
+
+    private static function seedUsers() {
+
+        User::truncate();
+
+        $user1 = new User();
+        $user1->name = 'joseSanFulgencio';
+        $user1->email = '8686470@alu.murciaeduca.es';
+        $user1->password = bcrypt('joseSanFulgencio');
+        $user1->save();
+
+    }
+
 }

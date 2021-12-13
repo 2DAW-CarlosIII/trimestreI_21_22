@@ -24,8 +24,11 @@ Route::get('import', [TerremotosController::class, 'getImport']);
 
 Route::get('municipios', [MunicipiosController::class, 'getIndex'])->name('municipios');
 
+Route::get('municipios/edit/{id}', [MunicipiosController::class, 'getEdit']);
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
-})->name('dashboard');
+})->name('dashboard')->middleware('auth');
 
 require __DIR__.'/auth.php';

@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
 use App\Models\Terremoto;
 use App\Models\Localidad;
+use Illuminate\Database\Seeder;
 
 class TerremotosTableSeeder extends Seeder
 {
@@ -16,6 +16,32 @@ class TerremotosTableSeeder extends Seeder
     public function run()
     {
         Terremoto::truncate();
+
+        seedTerremotos() {
+
+            foreach(self::$terremotos as $terremoto) {
+
+                if ($terremoto['magnitud'] >= 4) {
+                    
+                    $fecha = new \DateTime($terremoto['DateTime']);
+
+                    $t = new Terremoto;
+                    $t->OBJECTID = $terremoto['OBJECTID'];
+                    $t->DateTime = $fecha;
+                    $t->ErrTime = $terremoto['ErrTime'];
+                    $t->RMS = $terremoto['RMS'];
+                    $t->Latitude = $terremoto['Latitude'];
+                    $t->Longitude = $terremoto['Longitude'];
+                    $t->Depth = $terremoto['Depth'];
+                    $t->Magnitud = $terremoto['magnitud'];
+                    $t->localidad_id = rand(1, 143);
+                    $t->save();
+
+                }
+
+            }
+
+        }
 
     }
 
