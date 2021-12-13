@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MunicipiosController;
 use App\Http\Controllers\LocalidadesController;
 use App\Http\Controllers\TerremotosController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,9 +17,7 @@ use App\Http\Controllers\TerremotosController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'Index']);
 
 Route::get('import', [TerremotosController::class, 'getImport']);
 
