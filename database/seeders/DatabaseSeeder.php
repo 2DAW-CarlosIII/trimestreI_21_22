@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
+use app\Models\Terremoto;
 
 class DatabaseSeeder extends Seeder
 {
@@ -29,4 +30,6 @@ class DatabaseSeeder extends Seeder
 
         Schema::enableForeignKeyConstraints();
     }
+
+
 }

@@ -28,4 +28,8 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
 
+Route::get('/localidades/{municipio_id?}', [LocalidadesController::class, 'localidades.blade.php']);
+
+Route::get('/municipios/edit/{id}', [MunicipiosController::class, 'editMunicipio.blade.php']);
+
 require __DIR__.'/auth.php';

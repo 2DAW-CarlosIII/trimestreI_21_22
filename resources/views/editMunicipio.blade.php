@@ -11,18 +11,21 @@
             </a>
         </x-slot>
 
-        <form method="POST" action="">
+        <form method="POST" action="{{ url('/municipios/edit', array('id' => $municipio->id))}}">
+
+            {{method_field('PUT')}}
+            @csrf
 
             <!-- Nombre -->
             <div>
-                <x-label for="nombre" :value="__('Nombre')" />
+                <x-label for="nombre" :value="{{$municipio->nombre}}" />
 
                 <x-input id="nombre" class="block mt-1 w-full text-gray-700" type="text" name="nombre" value="" required autofocus />
             </div>
 
             <!-- Población -->
             <div class="mt-4">
-                <x-label for="poblacion" :value="__('Población')" />
+                <x-label for="poblacion" :value="{{$municipio->poblacion}}" />
 
                 <x-input id="poblacion" class="block mt-1 w-full text-gray-700" type="number" name="poblacion" value="" required />
             </div>
