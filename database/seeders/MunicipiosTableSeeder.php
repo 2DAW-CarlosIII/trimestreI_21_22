@@ -15,7 +15,12 @@ class MunicipiosTableSeeder extends Seeder
     public function run()
     {
         Municipio::truncate();
-
+        foreach( self::$municipios as $municipios ) {
+            $p = new Municipio();
+            $p->nombre = $municipios['nombre'];
+            $p->poblacion = $municipios['poblacion'];
+            $p->save();
+        }
     }
 
     private static $municipios = array (
