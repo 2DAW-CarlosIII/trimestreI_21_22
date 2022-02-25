@@ -1,7 +1,14 @@
 <?php
 
+use App\Http\Controllers\API\PropietarioController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Psr\Http\Message\ServerRequestInterface;
+use Tqdev\PhpCrudApi\Api;
+use Tqdev\PhpCrudApi\Config;
+use Illuminate\Validation\ValidationException;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +21,50 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('/tokens/create', function (Request $request) {
+    $request->validate([
+        'email' => 'required|email',
+        'password' => 'required'
+    ]);
+
+    $user = User::where('email', $request->email)->first();
+
+    if (! $user || ! Hash::check($request->password, $user->password)) {
+        throw ValidationException::withMessages([
+            'email' => ['The provided credentials are incorrect.'],
+        ]);
+    }
+
+    return response()->json([
+        'token_type' => 'Bearer',
+        'access_token' => $user->createToken('token_name')->plainTextToken // token name you can choose for your self or leave blank if you like to
+    ]);
+});
+
+
+Route::middleware('auth:sanctum')->apiResource('propietarios', PropietarioController::class);
+
+Route::middleware('auth:sanctum')->post('propietarios', [PropietarioController::class, 'mostrarCursos']);
+
+Route::middleware('auth:sanctum')->put('/propietarios/{propietarioId}', [PropietarioController::class, 'update']);
+
+
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::any('/{any}', function (ServerRequestInterface $request) {
+    $config = new Config([
+        'address' => env('DB_HOST', '127.0.0.1'),
+        'database' => env('DB_DATABASE', 'forge'),
+        'username' => env('DB_USERNAME', 'forge'),
+        'password' => env('DB_PASSWORD', ''),
+        'basePath' => '/api',
+    ]);
+    $api = new Api($config);
+    $response = $api->handle($request);
+    return $response;
+})->where('any', '.*');
+
