@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddConstruccionesRelations extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('construcciones', function (Blueprint $table) {
+            $table->BigInteger('propietario');
+
+            $table->foreign('propietario')->references('id')->on('propietarios');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('construcciones', function (Blueprint $table) {
+            $table->dropForeign('construcciones_propietario_foreign');
+            $table->dropColumn('propietario');
+        });
+    }
+}
