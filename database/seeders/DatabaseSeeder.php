@@ -26,11 +26,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TerremotosTableSeeder::class);
 
-        User::create([
-            'name' => 'albsierra',
-            'email' => 'alberto.sierra@murciaeduca.es',
-            'password' => bcrypt('alumno'),
-        ]);
+        \App\Models\User::factory(10)->create();
 
         Model::reguard();
 
