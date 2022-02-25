@@ -19,8 +19,8 @@ class CreateTerremotosTable extends Migration
             $table->dateTime('DateTime')->nullable();
             $table->float('ErrTime')->nullable();
             $table->float('RMS')->nullable();
-            $table->float('Latitude')->nullable();
-            $table->float('Longitude')->nullable();
+            $table->float('Latitude',8,4)->nullable();
+            $table->float('Longitude',8,4)->nullable();
             $table->float('Depth')->nullable();
             $table->float('Magnitud')->nullable();
             $table->bigInteger('localidad_id')->unsigned()->nullable();
