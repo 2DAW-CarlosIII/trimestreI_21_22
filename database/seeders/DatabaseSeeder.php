@@ -26,11 +26,13 @@ class DatabaseSeeder extends Seeder
 
         $this->call(TerremotosTableSeeder::class);
 
-        User::create([
+        $this->call(PropietarioSeeder::class);
+
+        /*User::create([
             'name' => 'albsierra',
             'email' => 'alberto.sierra@murciaeduca.es',
             'password' => bcrypt('alumno'),
-        ]);
+        ]);*/
 
         Model::reguard();
 
