@@ -20,11 +20,13 @@ class DatabaseSeeder extends Seeder
         Model::unguard();
         Schema::disableForeignKeyConstraints();
 
-        $this->call(MunicipiosTableSeeder::class);
+        //$this->call(MunicipiosTableSeeder::class);
 
-        $this->call(LocalidadesTableSeeder::class);
+        //$this->call(LocalidadesTableSeeder::class);
 
-        $this->call(TerremotosTableSeeder::class);
+        //$this->call(TerremotosTableSeeder::class);
+
+        $this->call(PropietariosTableSeeder::class);
 
         User::create([
             'name' => 'albsierra',
